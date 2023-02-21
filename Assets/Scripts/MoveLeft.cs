@@ -6,7 +6,7 @@ public class MoveLeft : MonoBehaviour
 {
     private float speed=30;
     private Playercontroller Playercontrollerscript;
-    private float leftBouond =-15;
+    private float leftBound =-15;
 
 
 
@@ -20,13 +20,38 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Playercontrollerscript.gameover==false){
-            transform.Translate(Vector3.left *Time.deltaTime *speed);
-        }
+        // if(Playercontrollerscript.gameover==false){
+        //     transform.Translate(Vector3.left *Time.deltaTime *speed);
+        // }
 
-        if (transform.position.x<leftBouond && gameObject.CompareTag("Obstacle")){
+        // if (transform.position.x<leftBouond && gameObject.CompareTag("Obstacle")){
+        //     Destroy(gameObject);
+        // }
+
+        // if (Playercontrollerscript.doublespeed){
+        //     transform.Translate(Vector3.left * Time.deltaTime * (speed*2));
+        // }
+        // else{
+        //     transform.Translate(Vector3.left *Time.deltaTime * speed);
+        // }
+       
+       if (Playercontrollerscript.gameover == false)
+       {
+        if (Playercontrollerscript.doublespeed)
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * (speed * 2));
+        }
+        else
+        {
+            transform.Translate(Vector3.left * Time.deltaTime * speed);
+            }
+        }
+        if (transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))
+        {
             Destroy(gameObject);
         }
+
+
         
     }
 }
